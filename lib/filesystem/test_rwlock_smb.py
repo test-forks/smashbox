@@ -12,6 +12,9 @@ smbpath = config.get('rwlock_smb_smbpath',"Z:/smb-rw-lock/")
 clean_previous_run = True
 path = smbpath + "/officeSimulation_word/"
 
+config.expected_result = do_not_report_as_failure("smb implements a special locking mechanism that corrupts files when trying to open them in read mode... ")
+
+restrict_execution(current_platform="Windows") # Restrict the execution to be run only in Windows
 
 def count_office_files(path):
     n=0
